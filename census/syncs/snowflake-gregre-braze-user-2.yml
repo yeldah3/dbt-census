@@ -31,10 +31,7 @@ sync:snowflake-gregre-braze-user-2:
         liquid_template: "{{ record['ID'] | append record['ID'] | append record['ID']
           }}"
     to:
-      field_name: change_test
-    field_type: Integer
-    follow_source_type: false
-    generate_field: true
+      field_name: country
   operational_settings:
     alerts:
       failed_run_notifications:
