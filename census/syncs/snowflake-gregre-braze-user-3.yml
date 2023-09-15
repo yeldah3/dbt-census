@@ -28,6 +28,12 @@ sync:snowflake-gregre-braze-user-3:
   - from:
       type: liquid-template
       data:
+        liquid_template: "{{ record['ID'] }}"
+    to:
+      field_name: date_of_last_session
+  - from:
+      type: liquid-template
+      data:
         liquid_template: "{{ record['ID'] | append record['ID'] | append record['ID']
           }}"
     to:
