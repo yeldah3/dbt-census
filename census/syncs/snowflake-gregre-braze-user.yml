@@ -1,0 +1,44 @@
+---
+sync:snowflake-gregre-braze-user:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: entity
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    object_identifier: entity:gregre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: ID
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  - from:
+      type: liquid-template
+      data:
+        liquid_template: "{{ record['ID'] | append record['ID'] | append record['ID']
+          }}"
+    to:
+      field_name: change_test
+    field_type: Integer
+    follow_source_type: false
+    generate_field: true
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75
