@@ -1,0 +1,6 @@
+---
+model:fewggre:
+  name: fewggre
+  query: select 5 as id
+  description:
+  connection: data_warehouse:redshift

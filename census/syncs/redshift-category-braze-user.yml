@@ -1,0 +1,36 @@
+---
+sync:redshift-category-braze-user:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: table
+    connection_identifier: data_warehouse:redshift
+    table_catalog: dev
+    table_schema: aws_sample_data
+    table_name: category
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: catid
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

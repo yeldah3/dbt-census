@@ -1,0 +1,6 @@
+---
+'model:':
+  name: womp
+  query: select 2 as id
+  description:
+  connection: data_warehouse:redshift

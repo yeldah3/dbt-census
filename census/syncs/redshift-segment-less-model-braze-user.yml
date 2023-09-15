@@ -1,0 +1,36 @@
+---
+sync:redshift-segment-less-model-braze-user:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: daily
+      hour: 16
+      minute: 0
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: model
+    connection_identifier: data_warehouse:redshift
+    object_identifier: model:segment-less-model
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

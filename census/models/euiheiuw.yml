@@ -1,0 +1,6 @@
+---
+model:euiheiuw:
+  name: euiheiuw
+  query: select 3 as id
+  description:
+  connection: data_warehouse:redshift

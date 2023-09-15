@@ -1,0 +1,6 @@
+---
+model:fdsfdas:
+  name: fdsfdas
+  query: select 4 as id
+  description:
+  connection: data_warehouse:redshift

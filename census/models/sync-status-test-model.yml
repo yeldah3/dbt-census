@@ -1,0 +1,9 @@
+---
+model:sync-status-test-model:
+  name: sync status test model
+  query: |-
+    select 1 as id, 'womp' as name
+    union
+    select 2 as id, 'yoot' as name
+  description:
+  connection: data_warehouse:redshift
