@@ -10,6 +10,7 @@ sync:snowflake-whimsical-user-braze-user-2:
   triggers:
     schedule:
       frequency: never
+    on_other_sync_success: sync:snowflake-whimsical-user-braze-user-1
   destination:
     connection_identifier: destination:braze
     object_identifier: user
