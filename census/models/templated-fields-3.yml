@@ -1,0 +1,9 @@
+---
+model:templated-fields-3:
+  name: templated fields
+  query: |-
+    select 'hadley' as first_name, 'killen' as last_name, 1 as id
+
+    -- select named_struct('a', 1) as boop
+  description:
+  connection: data_warehouse:databricks

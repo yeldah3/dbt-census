@@ -1,0 +1,42 @@
+---
+sync:snowflake-lots-of-columns-braze-user:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: entity
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    object_identifier: entity:lots-of-columns
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: ID
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  - from:
+      type: reference
+      data:
+        object_identifier: entity:bgfbgf
+        referenced_column_name: ID
+        referenced_object_identifier: entity:bgfbgf
+    to:
+      field_name: country
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75

@@ -1,5 +1,5 @@
 ---
-sync:snowflake-templated-fields-model-braze-user-1:
+sync:snowflake-templated-fields-model-braze-user-2:
   paused: false
   behavior:
     operation: upsert

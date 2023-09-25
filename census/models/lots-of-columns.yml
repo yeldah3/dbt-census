@@ -1,0 +1,8 @@
+---
+model:lots-of-columns:
+  name: lots of columns
+  query: select 1 as id, 2 as huiwfhw, 3 as ghiruegheiru, 4 as hiuwhgeiruhgeir, 5
+    as fhreiuwgheiru, 6 as fhueiwhgiruewhg, 7 as hreuigheiru, 8 as grehiugherug, 9
+    as ghueigheiuq, 10 as hgeirugheiruhgeiruhiu
+  description:
+  connection: data_warehouse:snowflake-iq48949-okay-to-test

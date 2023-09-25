@@ -1,0 +1,7 @@
+---
+model:templated-fields-6:
+  name: templated_fields
+  query: select 1 as id, 'hadley' as first_name, 'killen' as last_name, json_unquote(json_object('a',
+    1)) as womp
+  description:
+  connection: data_warehouse:mysql

@@ -1,0 +1,15 @@
+---
+model:snowflake-basic-templated-fields:
+  name: snowflake basic templated fields
+  query: |-
+    select
+        1 as id,
+        'Nick' as first_name,
+        'Cardechi' as last_name,
+        'Nick@Example.com' as email,
+        'Census' as company,
+        'United States' as country,
+        'website' as lead_source,
+        9 as purchases_l30d
+  description:
+  connection: data_warehouse:snowflake-iq48949-okay-to-test-1

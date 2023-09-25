@@ -1,0 +1,25 @@
+---
+model:templated-fields-1:
+  name: templated fields
+  query: |-
+    select
+        1 as id,
+        'Nick' as first_name,
+        'Cardechi' as last_name,
+        'Nick@Example.com' as email,
+        'Census' as company,
+        'United States' as country,
+        'website' as lead_source,
+        9 as purchases_l30d
+    -- union
+    -- select
+    --     2 as id,
+    --     'Hadley' as first_name,
+    --     'Killen' as last_name,
+    --     'hadley@Example.com' as email,
+    --     'Census' as company,
+    --     'United States' as country,
+    --     'website' as lead_source,
+    --     9 as purchases_l30d
+  description:
+  connection: data_warehouse:redshift
