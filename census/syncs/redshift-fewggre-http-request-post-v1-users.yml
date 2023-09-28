@@ -1,0 +1,42 @@
+---
+sync:redshift-fewggre-http-request-post-v1-users:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:http-request
+    object_identifier: sync:532ea28c-bdcc-4a5f-ac35-339adf4003b8
+  source:
+    type: entity
+    connection_identifier: data_warehouse:redshift
+    object_identifier: entity:fewggre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: _census_tracking_id
+    is_primary_identifier: true
+  advanced_configuration:
+    batch_size: 1
+    http_method: POST
+    payload_type: json
+    http_endpoint: "/v1/users"
+    trigger_methods: rows_added/rows_updated
+    payload_template: hgrughere
+    payload_json_subtype: template
+  operational_settings:
+    alerts:
+      failed_run_notifications:
+        enabled: true
+      failed_record_notifications:
+        enabled: true
+        threshold_percent: 75
