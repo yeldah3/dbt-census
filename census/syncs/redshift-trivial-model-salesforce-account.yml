@@ -1,0 +1,39 @@
+---
+sync:redshift-trivial-model-salesforce-account:
+  paused: true
+  behavior:
+    operation: update
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:brad-developer-salesforce
+    object_identifier: Account
+  source:
+    type: model
+    connection_identifier: data_warehouse:redshift
+    object_identifier: model:trivial-model
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: Id
+    is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: company_name
+    to:
+      field_name: Name
+    preserve_values: false
+  advanced_configuration:
+    bulk_id_lookup: true
+  operational_settings:
+    alerts: []

@@ -1,0 +1,47 @@
+---
+sync:redshift-fewggre-customer-io-event-2:
+  paused: true
+  template_sync_identifier: sync:redshift-fewggre-customer-io-event-1
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: true
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:brad-developer-customer-io
+    object_identifier: event
+  source:
+    type: cohort
+    connection_identifier: data_warehouse:redshift
+    object_identifier: cohort:control-8
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: _census_event_tracking_id
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: name
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: customer_id
+      lookup_object:
+        object_identifier: customer
+        field_to_match_by: email
+  operational_settings:
+    alerts: []

@@ -1,0 +1,6 @@
+---
+model:user-model:
+  name: user model
+  query: select 1 as id, 'boop@gmail.com' as email
+  description:
+  connection: data_warehouse:redshift-2

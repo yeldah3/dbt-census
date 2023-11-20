@@ -1,0 +1,39 @@
+---
+sync:redshift-fewggre-mailgun-destination-list-member-2:
+  paused: true
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:mailgun-1
+    object_identifier: member
+  source:
+    type: entity
+    connection_identifier: data_warehouse:redshift
+    object_identifier: entity:fewggre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: address
+    is_primary_identifier: true
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: boop@sandbox7c0bd9052d8e4d038f81799d657d775a.mailgun.org
+    to:
+      field_name: list_address
+      lookup_object:
+        object_identifier: list
+        field_to_match_by: id
+  operational_settings:
+    alerts: []

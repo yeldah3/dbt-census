@@ -1,0 +1,46 @@
+---
+sync:snowflake-mapping-mismatch-test-s3-data-m-d-y-csv:
+  paused: false
+  behavior:
+    operation: mirror
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+    order_by: alphabetical_column_name
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:s3-1
+    object_identifier: data_%m-%d-%y.csv
+    file_settings:
+      file_format: CSV
+      delimiter: ","
+      include_header: true
+      pgp_public_key: ''
+  source:
+    type: model
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    object_identifier: model:mapping-mismatch-test
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: BOOL_COL
+    to:
+      field_name: BOOL_COL_2
+    field_type: Boolean
+    follow_source_type: true
+    generate_field: true
+  - from:
+      type: column
+      data:
+        column_name: STRING_COL
+    to:
+      field_name: STRING_COL_2
+    field_type: String
+    follow_source_type: true
+    generate_field: true
+  operational_settings:
+    alerts: []

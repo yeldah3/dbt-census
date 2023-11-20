@@ -1,0 +1,32 @@
+---
+sync:snowflake-whimsical-user-braze-user-1:
+  paused: true
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+    on_other_sync_success: sync:snowflake-whimsical-user-braze-user
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: table
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    table_catalog: ANUDB
+    table_schema: PUBLIC
+    table_name: WHIMSICAL_USER
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: USER_ID
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  operational_settings:
+    alerts: []

@@ -1,0 +1,45 @@
+---
+sync:redshift-fewggre-reddit-conversion-event-1:
+  paused: false
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: true
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:reddit-ads
+    object_identifier: ConversionEvent
+  source:
+    type: entity
+    connection_identifier: data_warehouse:redshift
+    object_identifier: entity:fewggre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: _census_tracking_id
+    is_primary_identifier: true
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: PageVisit
+    to:
+      field_name: event_type.tracking_type
+  - from:
+      type: constant
+      data:
+        basic_type: datetime
+        value: '2018-01-01T00:00:00Z'
+    to:
+      field_name: event_at
+  operational_settings:
+    alerts: []

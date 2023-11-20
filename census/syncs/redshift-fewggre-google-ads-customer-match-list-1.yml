@@ -1,0 +1,40 @@
+---
+sync:redshift-fewggre-google-ads-customer-match-list-1:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:google-ads
+    object_identifier: user_data
+  source:
+    type: entity
+    connection_identifier: data_warehouse:redshift
+    object_identifier: entity:fewggre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: user_identifier.mobile_id
+    is_primary_identifier: true
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: '6759488046'
+    to:
+      field_name: user_list_id
+      lookup_object:
+        object_identifier: user_list
+        field_to_match_by: id
+    array_field: true
+  operational_settings:
+    alerts: []

@@ -1,0 +1,32 @@
+---
+sync:cron-sync-5:
+  paused: false
+  label: Cron sync
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: expression
+      minute: 5
+      cron_expression: 05 */6 * * *
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: segment
+    connection_identifier: data_warehouse:redshift
+    object_identifier: segment:gggg-segment
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  operational_settings:
+    alerts: []

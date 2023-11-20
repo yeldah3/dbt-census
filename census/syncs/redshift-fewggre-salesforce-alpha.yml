@@ -1,0 +1,34 @@
+---
+sync:redshift-fewggre-salesforce-alpha:
+  paused: true
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:brad-developer-salesforce
+    object_identifier: Alpha__c
+  source:
+    type: table
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    table_catalog: ANUDB
+    table_schema: PUBLIC
+    table_name: WORKSPACE
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: ALPHA__c
+    is_primary_identifier: true
+    preserve_values: false
+  advanced_configuration:
+    bulk_id_lookup: true
+  operational_settings:
+    alerts: []

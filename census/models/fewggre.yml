@@ -1,0 +1,6 @@
+---
+model:fewggre:
+  name: fewggre
+  query: select 5 as id, '2023-10-28 00:00:00+000'::TIMESTAMP as date
+  description:
+  connection: data_warehouse:redshift

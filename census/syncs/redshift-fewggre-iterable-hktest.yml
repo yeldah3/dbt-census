@@ -1,0 +1,31 @@
+---
+sync:redshift-fewggre-iterable-hktest:
+  paused: true
+  behavior:
+    operation: mirror
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:iterable
+    object_identifier: catalog:HkTest
+  source:
+    type: table
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    table_catalog: ANUDB
+    table_schema: PUBLIC
+    table_name: WORKSPACE
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: key
+    is_primary_identifier: true
+  operational_settings:
+    alerts: []

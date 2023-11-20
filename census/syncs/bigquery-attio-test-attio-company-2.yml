@@ -1,0 +1,51 @@
+---
+sync:bigquery-attio-test-attio-company-2:
+  paused: true
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:attio
+    object_identifier: company
+  source:
+    type: model
+    connection_identifier: data_warehouse:bigquery
+    object_identifier: model:attio-test
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: unique_attribute
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: categories
+    to:
+      field_name: hadley_multiselect_realsies
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: boop
+    to:
+      field_name: hadley_select
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 10

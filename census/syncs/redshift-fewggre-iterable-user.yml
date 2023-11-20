@@ -1,0 +1,31 @@
+---
+sync:redshift-fewggre-iterable-user:
+  paused: true
+  behavior:
+    operation: update
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: table
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    table_catalog: ANUDB
+    table_schema: PUBLIC
+    table_name: WORKSPACE
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: WHIMSICAL_ID
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  operational_settings:
+    alerts: []

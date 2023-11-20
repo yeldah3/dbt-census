@@ -1,0 +1,68 @@
+---
+sync:redshift-fewggre-facebook-conversions:
+  paused: false
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: true
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:facebook-ads
+    object_identifier: conversion_event
+  source:
+    type: entity
+    connection_identifier: data_warehouse:redshift
+    object_identifier: entity:fewggre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: event_id
+    is_primary_identifier: true
+  - from:
+      type: constant
+      data:
+        basic_type: number
+        value: '955575395591403'
+    to:
+      field_name: "$pixel_id"
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: HadleyTest
+    to:
+      field_name: action_source
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: BeepBoop
+    to:
+      field_name: event_name
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: '2023-10-28 00:00:00+000'
+    to:
+      field_name: event_time
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: every_time
+      should_send_recovery: false
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75

@@ -1,0 +1,6 @@
+---
+model:gggggg:
+  name: gggggg
+  query: select 1 as id
+  description:
+  connection: data_warehouse:redshift

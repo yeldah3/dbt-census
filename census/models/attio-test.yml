@@ -1,0 +1,13 @@
+---
+model:attio-test:
+  name: attio test
+  query: |-
+    with temp as (select '["womp", "boop"]' as categories, 1 as id
+    union all
+    select '[]' as categories, 2 as id
+    UNION all
+    select '["yoot"]' as categories, 3 as id)
+
+    select categories as categories, id from temp
+  description:
+  connection: data_warehouse:bigquery

@@ -1,0 +1,37 @@
+---
+sync:postgres-templated-fields-braze-user:
+  paused: false
+  behavior:
+    operation: mirror
+    mirror_properties:
+      strategy: sync_updates_and_deletes
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: model
+    connection_identifier: data_warehouse:postgres
+    object_identifier: model:templated-fields
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  - from:
+      type: liquid-template
+      data:
+        liquid_template: "{{ record['first_name'] }}_{{ record['last_name'] }}"
+    to:
+      field_name: gender
+  operational_settings:
+    alerts: []

@@ -1,0 +1,6 @@
+---
+model:mapping-mismatch-test:
+  name: Mapping Mismatch test
+  query: select true as bool_col, 'womp' as string_col
+  description:
+  connection: data_warehouse:snowflake-iq48949-okay-to-test

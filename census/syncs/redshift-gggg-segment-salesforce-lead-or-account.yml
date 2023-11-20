@@ -1,0 +1,44 @@
+---
+sync:redshift-gggg-segment-salesforce-lead-or-account:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:brad-developer-salesforce
+    object_identifier: Lead|Account
+    lead_union_default_object: account
+  source:
+    type: segment
+    connection_identifier: data_warehouse:redshift
+    object_identifier: segment:gggg-segment
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: Census_ID__c|Id__c
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: Company|Name
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: LastName|
+  advanced_configuration:
+    bulk_id_lookup: true
+  operational_settings:
+    alerts: []

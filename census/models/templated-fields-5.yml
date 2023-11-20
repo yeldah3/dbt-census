@@ -1,0 +1,6 @@
+---
+model:templated-fields-5:
+  name: templated_fields
+  query: select 1 as id, 'hadley' as first_name, 'killen' as last_name
+  description:
+  connection: data_warehouse:sqlite

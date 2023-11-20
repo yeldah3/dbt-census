@@ -1,0 +1,50 @@
+---
+sync:mysql-templated-fields-braze-user-1:
+  paused: true
+  behavior:
+    operation: mirror
+    mirror_properties:
+      strategy: sync_updates_and_deletes
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: model
+    connection_identifier: data_warehouse:mysql
+    object_identifier: model:templated-fields-6
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  - from:
+      type: liquid-template
+      data:
+        liquid_template: boop {{record['womp'] }}
+    to:
+      field_name: email_subscribe
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: fjewifhe
+    to:
+      field_name: first_name
+  - from:
+      type: column
+      data:
+        column_name: womp
+    to:
+      field_name: email
+  operational_settings:
+    alerts: []

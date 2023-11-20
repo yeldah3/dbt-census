@@ -1,0 +1,50 @@
+---
+sync:redshift-fewggre-google-ads-call-conversion:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:google-ads
+    object_identifier: call_conversion
+  source:
+    type: entity
+    connection_identifier: data_warehouse:redshift
+    object_identifier: entity:fewggre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: call_conversion.caller_id
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: call_conversion.call_start_date_time
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: call_conversion.conversion_date_time
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: call_conversion.conversion_action
+      lookup_object:
+        object_identifier: conversion_action
+        field_to_match_by: id
+  operational_settings:
+    alerts: []

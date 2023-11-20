@@ -1,0 +1,35 @@
+---
+sync:redshift-fewggre-braze-user-2:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: entity
+    connection_identifier: data_warehouse:redshift
+    object_identifier: entity:fewggre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  - from:
+      type: liquid-template
+      data:
+        liquid_template: "{{ record['id'] }}"
+    to:
+      field_name: country
+  operational_settings:
+    alerts: []

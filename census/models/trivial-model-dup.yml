@@ -1,0 +1,11 @@
+---
+model:trivial-model-dup:
+  name: Trivial Model dup
+  query: |-
+    SELECT 1 AS id, 'Planet Express'::text AS company_name
+    union
+    SELECT 2 as id, 'womp'::text as company_name
+    union
+    SELECT 3 as id, 'womp'::text as company_name
+  description:
+  connection: data_warehouse:redshift

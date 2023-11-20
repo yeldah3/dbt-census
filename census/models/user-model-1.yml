@@ -1,0 +1,6 @@
+---
+model:user-model-1:
+  name: user model
+  query: select null as email, 1 as id
+  description:
+  connection: data_warehouse:bigquery-1

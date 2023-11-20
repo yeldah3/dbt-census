@@ -1,0 +1,44 @@
+---
+sync:redshift-absolutely-trivial-model-iterable-event-1:
+  paused: false
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: true
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:iterable
+    object_identifier: event
+  source:
+    type: entity
+    connection_identifier: data_warehouse:redshift
+    object_identifier: entity:trivial-model
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: boop
+    to:
+      field_name: id
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: company_name
+    to:
+      field_name: eventName
+  - from:
+      type: constant
+      data:
+        basic_type: datetime
+        value: '1996-10-26'
+    to:
+      field_name: createdAt
+  operational_settings:
+    alerts: []

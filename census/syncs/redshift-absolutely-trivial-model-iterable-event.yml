@@ -1,0 +1,46 @@
+---
+sync:redshift-absolutely-trivial-model-iterable-event:
+  paused: true
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: true
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:iterable
+    object_identifier: event
+  source:
+    type: table
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    table_catalog: ANUDB
+    table_schema: PUBLIC
+    table_name: WORKSPACE
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: id
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: company_name
+    to:
+      field_name: eventName
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: 10-26-1996
+    to:
+      field_name: createdAt
+  operational_settings:
+    alerts: []

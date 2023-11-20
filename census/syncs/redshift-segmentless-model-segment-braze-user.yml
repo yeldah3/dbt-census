@@ -1,0 +1,38 @@
+---
+sync:redshift-segmentless-model-segment-braze-user:
+  paused: true
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: segment
+    connection_identifier: data_warehouse:redshift
+    object_identifier: segment:segmentless-model-segment
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: change_test
+    field_type: Integer
+    follow_source_type: false
+    generate_field: true
+  operational_settings:
+    alerts: []

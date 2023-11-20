@@ -1,0 +1,35 @@
+---
+sync:redshift-boop-segment-outreach-account-1:
+  paused: true
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:census-partner-outreach
+    object_identifier: account
+  source:
+    type: cohort
+    connection_identifier: data_warehouse:redshift
+    object_identifier: cohort:treatment-2
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: sharingTeamId
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: name
+  operational_settings:
+    alerts: []

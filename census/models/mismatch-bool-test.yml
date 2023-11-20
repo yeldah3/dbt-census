@@ -1,0 +1,6 @@
+---
+model:mismatch-bool-test:
+  name: Mismatch bool test
+  query: select true as bool_col, 'womp' as string_col
+  description:
+  connection: data_warehouse:redshift
