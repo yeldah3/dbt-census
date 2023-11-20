@@ -27,12 +27,8 @@ sync:redshift-fewggre-braze-user-6:
     is_primary_identifier: true
   operational_settings:
     alerts:
-    - type: FailureAlertConfiguration
-      send_for: first_time
-      should_send_recovery: true
-      options: {}
     - type: InvalidRecordPercentAlertConfiguration
       send_for: first_time
       should_send_recovery: true
       options:
-        threshold: 75
+        threshold: 5
