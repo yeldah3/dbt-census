@@ -32,3 +32,8 @@ sync:redshift-fewggre-braze-user-6:
       should_send_recovery: true
       options:
         threshold: 5
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
