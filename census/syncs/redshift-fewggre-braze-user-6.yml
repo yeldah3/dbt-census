@@ -29,7 +29,7 @@ sync:redshift-fewggre-braze-user-6:
     alerts:
     - type: FailureAlertConfiguration
       send_for: first_time
-      should_send_recovery: true
+      should_send_recovery: false
       options: {}
     - type: InvalidRecordPercentAlertConfiguration
       send_for: first_time
