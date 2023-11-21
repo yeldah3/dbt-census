@@ -31,10 +31,3 @@ sync:redshift-absolutely-trivial-model-braze-user-2:
       send_for: first_time
       should_send_recovery: true
       options: {}
-    - type: RuntimeAlertConfiguration
-      send_for: every_time
-      should_send_recovery: false
-      options:
-        threshold: 10
-        unit: hours
-        start_type: actual
