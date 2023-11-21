@@ -35,4 +35,4 @@ sync:redshift-fewggre-braze-user-6:
       send_for: first_time
       should_send_recovery: true
       options:
-        threshold: 75
+        threshold: 10
