@@ -29,4 +29,8 @@ sync:cron-sync-3:
       field_name: external_id
     is_primary_identifier: true
   operational_settings:
-    alerts: []
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
