@@ -28,4 +28,11 @@ sync:redshift-fewggre-iterable-hktest:
       field_name: key
     is_primary_identifier: true
   operational_settings:
-    alerts: []
+    alerts:
+    - type: RecordCountDeviationAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        record_type: source_record_count
+        threshold: 15
+        units_in_past: 10
