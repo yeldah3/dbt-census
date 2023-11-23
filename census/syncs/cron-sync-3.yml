@@ -35,7 +35,7 @@ sync:cron-sync-3:
       should_send_recovery: true
       options: {}
     - type: RecordCountDeviationAlertConfiguration
-      send_for: first_time
+      send_for: every_time
       should_send_recovery: true
       options:
         record_type: records_deletes
