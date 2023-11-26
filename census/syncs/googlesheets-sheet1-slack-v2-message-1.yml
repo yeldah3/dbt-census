@@ -1,0 +1,83 @@
+---
+sync:googlesheets-sheet1-slack-v2-message-1:
+  paused: false
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: true
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:slack-1
+    object_identifier: message
+  source:
+    type: table
+    connection_identifier: data_warehouse:googlesheets-1
+    table_catalog: google_sheets
+    table_schema: 1e7aHjzXEISL-cn8M-ds9y7-bU-ZlF0P807pzt806QVE
+    table_name: Sheet1
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: message_id
+    is_primary_identifier: true
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: U023Y87F0GZ
+    to:
+      field_name: channel_id
+      lookup_object:
+        object_identifier: channel
+        field_to_match_by: id
+  advanced_configuration:
+    rich_message:
+      type: doc
+      content:
+      - type: paragraph
+        content:
+        - type: text
+          text: 'heyooooo '
+        - type: mention
+          attrs:
+            id: "{{name}}"
+            label: name
+            icon:
+        - type: text
+          text: " your id is "
+        - type: mention
+          attrs:
+            id: "{{id}}"
+            label: id
+            icon:
+        - type: text
+          text: " and your boop is "
+        - type: mention
+          attrs:
+            id: "{{womp}}"
+            label: womp
+            icon:
+        - type: text
+          text: "!"
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"heyooooo
+      {{name}} your id is {{id}} and your boop is {{womp}} !"}}]}'
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
