@@ -3,8 +3,6 @@ sync:googlesheets-sheet1-slack-v2-message:
   paused: false
   behavior:
     operation: append
-    append_properties:
-      backfill_records: true
   mapping_configuration:
     sync_all_source_columns:
       enabled: false
@@ -33,7 +31,7 @@ sync:googlesheets-sheet1-slack-v2-message:
       type: constant
       data:
         basic_type: text
-        value: U023Y87F0GZ
+        value: C04SLB1NGHM
     to:
       field_name: channel_id
       lookup_object:
@@ -45,22 +43,22 @@ sync:googlesheets-sheet1-slack-v2-message:
       content:
       - type: paragraph
         content:
-        - type: text
-          text: 'hey '
+        - text: 'hey '
+          type: text
         - type: mention
           attrs:
             id: "{{name}}"
-            label: name
             icon:
-        - type: text
-          text: ", your boop is "
+            label: name
+        - text: ", your boop is "
+          type: text
         - type: mention
           attrs:
             id: "{{womp}}"
-            label: womp
             icon:
-        - type: text
-          text: "!"
+            label: womp
+        - text: "!"
+          type: text
     message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"hey
       {{name}} , your boop is {{womp}} !"}}]}'
   operational_settings:
