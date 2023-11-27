@@ -32,7 +32,7 @@ sync:snowflake-lots-of-columns-braze-user-1:
       should_send_recovery: true
       options: {}
     - type: InvalidRecordPercentAlertConfiguration
-      send_for: first_time
+      send_for: every_time
       should_send_recovery: true
       options:
         threshold: 5
