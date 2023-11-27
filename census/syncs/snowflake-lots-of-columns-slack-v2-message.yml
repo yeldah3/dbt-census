@@ -43,17 +43,27 @@ sync:snowflake-lots-of-columns-slack-v2-message:
       content:
       - type: paragraph
         content:
-        - text: 'fewfewfe '
-          type: text
+        - type: text
+          text: 'fewfewfe '
         - type: mention
           attrs:
-            id: "{{huiwfhw}}"
+            id: "{{hreuigheiru}}"
+            label: HREUIGHEIRU
             icon:
-            label: HUIWFHW
-        - text: ff
-          type: text
+        - type: text
+          text: ". "
+        - type: mention
+          attrs:
+            id: "#startrek"
+            label: "#startrek"
+            icon:
+        - type: mention
+          attrs:
+            id: "{{ghiruegheiru}}"
+            label: GHIRUEGHEIRU
+            icon:
     message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"fewfewfe
-      {{huiwfhw}} ff"}}]}'
+      {{hreuigheiru}} . #startrek {{ghiruegheiru}}"}}]}'
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
