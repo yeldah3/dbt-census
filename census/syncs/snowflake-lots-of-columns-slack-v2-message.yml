@@ -31,7 +31,7 @@ sync:snowflake-lots-of-columns-slack-v2-message:
       type: constant
       data:
         basic_type: text
-        value: C6PJYQHDZ
+        value: CC97UU9K2
     to:
       field_name: channel_id
       lookup_object:
@@ -43,15 +43,15 @@ sync:snowflake-lots-of-columns-slack-v2-message:
       content:
       - type: paragraph
         content:
-        - type: text
-          text: 'fewfewfe '
+        - text: 'fewfewfe '
+          type: text
         - type: mention
           attrs:
             id: "{{huiwfhw}}"
-            label: HUIWFHW
             icon:
-        - type: text
-          text: ff
+            label: HUIWFHW
+        - text: ff
+          type: text
     message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"fewfewfe
       {{huiwfhw}} ff"}}]}'
   operational_settings:
