@@ -1,0 +1,40 @@
+---
+sync:snowflake-gregre-braze-ben-test-api-triggered-campaign:
+  paused: false
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: true
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze-2
+    object_identifier: campaign_send:ffd1a02a-0764-4c2e-b8b4-db58b4b13a3e
+  source:
+    type: entity
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    object_identifier: entity:gregre
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: ID
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
