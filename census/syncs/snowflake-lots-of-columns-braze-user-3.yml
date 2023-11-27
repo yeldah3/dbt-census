@@ -28,15 +28,15 @@ sync:snowflake-lots-of-columns-braze-user-3:
   - from:
       type: column
       data:
-        column_name: FHUEIWHGIRUEWHG
-    to:
-      field_name: email
-  - from:
-      type: column
-      data:
         column_name: GREHIUGHERUG
     to:
       field_name: home_city
+  - from:
+      type: column
+      data:
+        column_name: HUIWFHW
+    to:
+      field_name: email
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
