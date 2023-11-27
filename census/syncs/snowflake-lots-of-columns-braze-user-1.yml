@@ -35,4 +35,4 @@ sync:snowflake-lots-of-columns-braze-user-1:
       send_for: first_time
       should_send_recovery: true
       options:
-        threshold: 75
+        threshold: 5
