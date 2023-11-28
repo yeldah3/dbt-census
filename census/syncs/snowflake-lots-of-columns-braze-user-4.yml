@@ -36,7 +36,7 @@ sync:snowflake-lots-of-columns-braze-user-4:
       send_for: first_time
       should_send_recovery: true
       options:
-        record_type: source_record_count
+        record_type: records_updates
         threshold: 15
         units_in_past: 10
     - type: RuntimeAlertConfiguration
