@@ -36,4 +36,4 @@ sync:snowflake-lots-of-columns-braze-user-4:
       send_for: every_time
       should_send_recovery: false
       options:
-        status_name: started
+        status_name: completed
