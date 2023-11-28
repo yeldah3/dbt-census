@@ -1,0 +1,11 @@
+---
+model:s3-test:
+  name: s3 test
+  query: |-
+    select '20231122_2' as id
+    , json_serialize(object('FirstName', array(p.firstname), 'LastName', array(p.lastname))) as user_attributes
+    from (select  'example''s@example.com' as email
+    , 'Zaid "Mark"' as firstname
+    , 'test' as lastname) p
+  description:
+  connection: data_warehouse:redshift-1
