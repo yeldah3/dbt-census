@@ -34,7 +34,7 @@ sync:snowflake-lots-of-columns-braze-user-4:
         threshold: 10
     - type: RecordCountDeviationAlertConfiguration
       send_for: first_time
-      should_send_recovery: true
+      should_send_recovery: false
       options:
         threshold: 5
         record_type: records_updates
@@ -44,7 +44,7 @@ sync:snowflake-lots-of-columns-braze-user-4:
       should_send_recovery: true
       options:
         unit: minutes
-        threshold: 3
+        threshold: 10
         start_type: scheduled
     - type: StatusAlertConfiguration
       send_for: every_time
