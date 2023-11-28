@@ -75,11 +75,11 @@ sync:bigquery-s3-no-records-test-s3-path-to-file-data-m-d-y-csv:
       options:
         threshold: 1
         record_type: source_record_count
-        units_in_past: 15
+        units_in_past: 10
     - type: RecordCountDeviationAlertConfiguration
       send_for: first_time
       should_send_recovery: true
       options:
-        threshold: 10
+        threshold: 1
         record_type: source_record_count
-        units_in_past: 10
+        units_in_past: 15
