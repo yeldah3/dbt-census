@@ -82,4 +82,4 @@ sync:bigquery-s3-no-records-test-s3-path-to-file-data-m-d-y-csv:
       options:
         threshold: 5
         record_type: source_record_count
-        units_in_past: 5
+        units_in_past: 6
