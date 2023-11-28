@@ -36,7 +36,7 @@ sync:snowflake-lots-of-columns-braze-user-4:
       send_for: every_time
       should_send_recovery: true
       options:
-        threshold: 1
+        threshold: 3
         unit: minutes
         start_type: scheduled
     - type: StatusAlertConfiguration
