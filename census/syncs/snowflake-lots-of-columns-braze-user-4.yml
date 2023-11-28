@@ -32,6 +32,13 @@ sync:snowflake-lots-of-columns-braze-user-4:
       should_send_recovery: true
       options:
         threshold: 75
+    - type: RuntimeAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 10
+        unit: hours
+        start_type: actual
     - type: StatusAlertConfiguration
       send_for: every_time
       should_send_recovery: false
