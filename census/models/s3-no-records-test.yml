@@ -1,6 +1,6 @@
 ---
 model:s3-no-records-test:
   name: s3 no records test
-  query: select * from anton_sheets_test.nish_test
+  query: select * from anton_sheets_test.nish_test where Last_name = 'BOOP'
   description:
   connection: data_warehouse:bigquery
