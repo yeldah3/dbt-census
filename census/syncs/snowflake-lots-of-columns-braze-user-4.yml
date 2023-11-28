@@ -37,7 +37,7 @@ sync:snowflake-lots-of-columns-braze-user-4:
       should_send_recovery: true
       options:
         record_type: records_updates
-        threshold: 15
+        threshold: 5
         units_in_past: 10
     - type: RuntimeAlertConfiguration
       send_for: every_time
