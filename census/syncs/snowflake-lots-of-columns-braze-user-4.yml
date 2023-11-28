@@ -41,8 +41,3 @@ sync:snowflake-lots-of-columns-braze-user-4:
         unit: minutes
         threshold: 10
         start_type: scheduled
-    - type: StatusAlertConfiguration
-      send_for: every_time
-      should_send_recovery: false
-      options:
-        status_name: completed
