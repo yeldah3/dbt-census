@@ -81,5 +81,5 @@ sync:bigquery-s3-no-records-test-s3-path-to-file-data-m-d-y-csv:
       should_send_recovery: true
       options:
         record_type: source_record_count
-        threshold: 15
+        threshold: 1
         units_in_past: 10
