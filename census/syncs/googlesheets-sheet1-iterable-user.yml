@@ -1,0 +1,60 @@
+---
+sync:googlesheets-sheet1-iterable-user:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:iterable
+    object_identifier: user
+  source:
+    type: table
+    connection_identifier: data_warehouse:googlesheets-1
+    table_catalog: google_sheets
+    table_schema: 1e7aHjzXEISL-cn8M-ds9y7-bU-ZlF0P807pzt806QVE
+    table_name: Sheet1
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: userId
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: email
+    to:
+      field_name: email
+  - from:
+      type: column
+      data:
+        column_name: name
+    to:
+      field_name: NAME
+  - from:
+      type: column
+      data:
+        column_name: womp
+    to:
+      field_name: WOMP
+  advanced_configuration:
+    project_type:
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
