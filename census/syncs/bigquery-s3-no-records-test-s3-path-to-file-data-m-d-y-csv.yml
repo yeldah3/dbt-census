@@ -38,7 +38,7 @@ sync:bigquery-s3-no-records-test-s3-path-to-file-data-m-d-y-csv:
     to:
       field_name: First_name
     field_type: String
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   - from:
       type: column
@@ -47,7 +47,7 @@ sync:bigquery-s3-no-records-test-s3-path-to-file-data-m-d-y-csv:
     to:
       field_name: Last_name
     field_type: String
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   - from:
       type: column
@@ -56,7 +56,7 @@ sync:bigquery-s3-no-records-test-s3-path-to-file-data-m-d-y-csv:
     to:
       field_name: Username
     field_type: String
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   operational_settings:
     alerts:
@@ -64,6 +64,11 @@ sync:bigquery-s3-no-records-test-s3-path-to-file-data-m-d-y-csv:
       send_for: first_time
       should_send_recovery: true
       options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
     - type: InvalidRecordPercentAlertConfiguration
       send_for: first_time
       should_send_recovery: true
