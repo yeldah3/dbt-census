@@ -73,6 +73,6 @@ sync:bigquery-s3-no-records-test-s3-path-to-file-data-m-d-y-csv:
       send_for: first_time
       should_send_recovery: true
       options:
-        threshold: 1
         unit: hours
+        threshold: 10
         start_type: actual
