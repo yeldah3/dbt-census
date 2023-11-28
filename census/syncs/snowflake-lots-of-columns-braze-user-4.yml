@@ -33,7 +33,7 @@ sync:snowflake-lots-of-columns-braze-user-4:
       options:
         threshold: 75
     - type: RuntimeAlertConfiguration
-      send_for: first_time
+      send_for: every_time
       should_send_recovery: true
       options:
         threshold: 1
