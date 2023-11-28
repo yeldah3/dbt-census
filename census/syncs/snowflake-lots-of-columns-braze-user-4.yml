@@ -1,0 +1,38 @@
+---
+sync:snowflake-lots-of-columns-braze-user-4:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  triggers:
+    schedule:
+      frequency: never
+  destination:
+    connection_identifier: destination:braze
+    object_identifier: user
+  source:
+    type: entity
+    connection_identifier: data_warehouse:snowflake-iq48949-okay-to-test
+    object_identifier: entity:lots-of-columns
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: FHREIUWGHEIRU
+    to:
+      field_name: external_id
+    is_primary_identifier: true
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
