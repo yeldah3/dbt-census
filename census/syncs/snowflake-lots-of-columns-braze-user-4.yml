@@ -27,10 +27,6 @@ sync:snowflake-lots-of-columns-braze-user-4:
     is_primary_identifier: true
   operational_settings:
     alerts:
-    - type: FailureAlertConfiguration
-      send_for: every_time
-      should_send_recovery: false
-      options: {}
     - type: InvalidRecordPercentAlertConfiguration
       send_for: first_time
       should_send_recovery: true
