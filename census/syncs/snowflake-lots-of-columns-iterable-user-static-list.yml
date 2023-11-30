@@ -29,12 +29,12 @@ sync:snowflake-lots-of-columns-iterable-user-static-list:
       type: constant
       data:
         basic_type: text
-        value: NEW LIST
+        value: '2912243'
     to:
       field_name: emailListIds
       lookup_object:
         object_identifier: static_list
-        field_to_match_by: name
+        field_to_match_by: id
     array_field: true
   operational_settings:
     alerts:
